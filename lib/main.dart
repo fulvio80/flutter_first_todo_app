@@ -38,88 +38,89 @@ class _MyHomePageState extends State<MyHomePage> {
     /* SafeArea */
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Colors.black54,
-          /* appBar */
-          appBar: AppBar(
-            toolbarHeight: 80,
-            elevation: 20,
-            centerTitle: true,
-            /* Text */
-            title: Text(
-              "Todo App",
-              style: TextStyle(
-                color: Colors.white60,
-                fontSize: 40,
-                fontStyle: FontStyle.italic,
-                letterSpacing: 5,
-              ),
+        backgroundColor: Colors.black54,
+        /* appBar */
+        appBar: AppBar(
+          toolbarHeight: 80,
+          elevation: 20,
+          centerTitle: true,
+          /* Text */
+          title: Text(
+            "Todo App",
+            style: TextStyle(
+              color: Colors.white60,
+              fontSize: 40,
+              fontStyle: FontStyle.italic,
+              letterSpacing: 5,
             ),
           ),
-          /* Button */
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.white60,
-            /* Icon */
-            child: Icon(
-              Icons.add,
-              color: Colors.deepPurple,
-              size: 35,
-            ),
-            /* onPressed function */
-            onPressed: () {
-              /* The showDialog Function */
-              showDialog(
-                  context: context,
-                  /* BuildContext */
-                  builder: (BuildContext context) {
-                    /* AlertDialog  */
-                    return AlertDialog(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0))),
-                      backgroundColor: Color.fromARGB(255, 219, 136, 42),
-                      title: Text("Add Todo"),
-                      /* TextField */
-                      content: TextField(
-                        decoration: InputDecoration(
-                          hintText: "ToDo",
-                        ),
-
-                        /* onChange Function prende il valore stringa */
-                        onChanged: (String value) {
-                          input = value;
-                        },
+        ),
+        /* Button */
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.white60,
+          /* Icon */
+          child: Icon(
+            Icons.add,
+            color: Colors.deepPurple,
+            size: 35,
+          ),
+          /* onPressed function */
+          onPressed: () {
+            /* The showDialog Function */
+            showDialog(
+                context: context,
+                /* BuildContext */
+                builder: (BuildContext context) {
+                  /* AlertDialog  */
+                  return AlertDialog(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                    backgroundColor: Color.fromARGB(255, 219, 136, 42),
+                    title: Text("Add Todo"),
+                    /* TextField */
+                    content: TextField(
+                      decoration: InputDecoration(
+                        hintText: "ToDo",
                       ),
-                      actions: [
-                        /* TextButton  */
-                        TextButton(
-                          /* onPressed function, al click -> setState((){}); notifica e apporta la modificazione 
+
+                      /* onChange Function prende il valore stringa */
+                      onChanged: (String value) {
+                        input = value;
+                      },
+                    ),
+                    actions: [
+                      /* TextButton  */
+                      TextButton(
+                        /* onPressed function, al click -> setState((){}); notifica e apporta la modificazione 
                           dello stato -> metodo add (aggiunge input all'array/List todo */
-                          onPressed: () {
-                            setState(() {
-                              todo.add(input);
-                              /* metodo print, controllo array/List nella console del flutter devTools */
-                              print(todo);
-                            });
-                            /* metodo migliore per rimuovere l'alertDialog  */
-                            Navigator.of(context).pop();
-                          },
-                          child: Text(
-                            "ADD",
-                            style: TextStyle(color: Colors.black),
-                          ),
+                        onPressed: () {
+                          setState(() {
+                            todo.add(input);
+                            /* metodo print, controllo array/List nella console del flutter devTools */
+                            print(todo);
+                          });
+                          /* metodo migliore per rimuovere l'alertDialog  */
+                          Navigator.of(context).pop();
+                        },
+                        child: Text(
+                          "ADD",
+                          style: TextStyle(color: Colors.black),
                         ),
-                      ],
-                    );
-                  });
-            },
-          ),
-          /* ---------------- */
-          /* costruire ListView, prima manipolazione array/List, implemtazione delete */
-          body: Padding(
+                      ),
+                    ],
+                  );
+                });
+          },
+        ),
+        /* ---------------- */
+        /* costruire ListView, prima manipolazione array/List, implementazione delete */
+        /* body: Padding(
             padding: EdgeInsets.all(5),
             /*  child: ListView.builder(
             
             ),  */
-          )),
+          ) */
+      ),
     );
   }
 }
