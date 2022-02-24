@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
     /* SafeArea */
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black54,
+        backgroundColor: Colors.white,
         /* appBar */
         appBar: AppBar(
           toolbarHeight: 80,
@@ -113,13 +113,26 @@ class _MyHomePageState extends State<MyHomePage> {
           },
         ),
         /* ---------------- */
-        /* costruire ListView, prima manipolazione array/List, implementazione delete */
-        /* body: Padding(
-            padding: EdgeInsets.all(5),
-            /*  child: ListView.builder(
-            
-            ),  */
-          ) */
+        /* Tasks: 1 costruire ListView, 2 prima manipolazione array/List, 3 implementazione delete */
+
+        body: ListView.separated(
+          padding: const EdgeInsets.all(8),
+          itemCount: todo.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Card(
+              /* child: Container( */
+              /* height: 50, */
+              /*  color: Colors.amber[input[index]], */
+              child: SizedBox(
+                  height: 50,
+                  child: Text(
+                    '${todo[index]}',
+                  )),
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) =>
+              const Divider(),
+        ),
       ),
     );
   }
