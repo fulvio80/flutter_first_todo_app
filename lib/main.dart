@@ -38,11 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
     /* SafeArea */
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         /* appBar */
         appBar: AppBar(
           toolbarHeight: 80,
-          elevation: 20,
+          elevation: 10,
           centerTitle: true,
           /* Text */
           title: Text(
@@ -112,27 +112,43 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
           },
         ),
+
         /* ---------------- */
         /* Tasks: 1 costruire ListView, 2 prima manipolazione array/List, 3 implementazione delete */
 
+        /* ListView */
         body: ListView.separated(
           padding: const EdgeInsets.all(8),
+          /* proprietà contatore dei todo */
           itemCount: todo.length,
+          /* proprietà che ritorna l'item customizzato */
           itemBuilder: (BuildContext context, int index) {
+            /* card */
             return Card(
-              /* child: Container( */
-              /* height: 50, */
-              /*  color: Colors.amber[input[index]], */
-              child: SizedBox(
-                  height: 50,
-                  child: Text(
-                    '${todo[index]}',
-                  )),
+              /* ListTile, widget utile pe rorganizzazione semantica della card/list */
+              child: ListTile(
+                tileColor: Color.fromARGB(255, 103, 197, 214),
+                title: Text(
+                  '${todo[index]}',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                /* Icon */
+                trailing: IconButton(
+                  icon: Icon(Icons.delete_outline_rounded, color: Colors.red),
+                  /* metodo di rimozione dell'item tramite index */
+                  onPressed: () {
+                    setState(() {
+                      todo.removeAt(index);
+                    });
+                  },
+                ),
+              ),
             );
           },
           separatorBuilder: (BuildContext context, int index) =>
               const Divider(),
         ),
+        /* ----->Approfondire Dismissable<------- */
       ),
     );
   }
