@@ -56,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
+
         /* Button */
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white60,
@@ -126,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
           itemBuilder: (BuildContext context, int index) {
             /* card */
             return Card(
-              /* ListTile, widget utile pe rorganizzazione semantica della card/list */
+              /* ListTile, widget utile pe organizzazione semantica della card/list */
               child: ListTile(
                 tileColor: Color.fromARGB(255, 103, 197, 214),
                 title: Text(
